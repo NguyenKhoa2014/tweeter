@@ -1,0 +1,28 @@
+.new-tweet {
+  background-color: #eee; 
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+}
+.new-tweet h2{
+  border-bottom: 1px solid black;
+  width: 100%;
+   
+}
+.tweet-form {
+  width: 100%;
+}
+.tweet-form textarea {
+  width: 100%;
+   
+}
+.tweet-button-group {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 5px;
+  margin-bottom: 5px; 
+  align-items: center; 
+}
+.negative {
+  color: red;
+  font-size: 1.5em;
+}
