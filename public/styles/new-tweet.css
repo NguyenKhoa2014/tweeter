@@ -35,22 +35,25 @@
    
 }
 article {
+  margin-top: 30px;
   position: relative;
   height: 155px;
   border: 1px solid aqua;
+  border-radius: 5px;
 }
 article header.tweet{
   background: #F3F3F3;
   height: 50px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 5px;
 }
 article footer.tweet {
   width: 100%;
   height: 40px;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
+  border-top: 1px solid lightgrey;
+   
   vertical-align: bottom;
   position: absolute;
   bottom: 0;
@@ -71,6 +74,7 @@ article footer.tweet:hover .icons {
 article:hover {
   background: green;
 }
+ 
 article header.tweet:hover {
   background: green;
 }
@@ -88,12 +92,13 @@ p.tweet.message{
   padding: 5px;
 }
 
-.message {
+/* .message {
   border-bottom: 1px solid lightgrey;
-}
+} */
 
 .userimg {
   height: 40px;
   width: 40px;
-   
+  border-radius: 5px;
+  margin-right: 5px; 
 }

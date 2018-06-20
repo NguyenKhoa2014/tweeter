@@ -85,12 +85,11 @@ $(document).ready(function(){
       </header>
       <p class="tweet message">${inputObj.tweet} </p>
       <footer class="tweet footer"> 
-      <p class="days">${inputObj.createDate}</p>
+      <p class="days">${inputObj.createDate} days ago</p>
       <div class="icons">
         <span class="glyphicon glyphicon-flag"></span>
         <span class="glyphicon glyphicon-retweet"></span>
         <span class="glyphicon glyphicon-heart"></span>
-         
       </div>
     </footer>
     </article>
@@ -109,8 +108,9 @@ $(document).ready(function(){
         let name = aTweet['user'].name;
         let avatar = aTweet['user']['avatars'].small;
         let handle = aTweet['user'].handle;
-        let createDate = aTweet['created_at']; 
-        // console.log('createDate : ', createDate);
+        //let createDate = aTweet['created_at'];
+        let createdDateMilli = aTweet['created_at'] / 86400000000;
+        let createDate = Math.round(createdDateMilli);  
         let $tweet = createTweetElement(aTweet['content']);
         let Obj = {
           name: name,
