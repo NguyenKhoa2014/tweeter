@@ -1,12 +1,12 @@
 $(document).ready(function() {
   // --- our code goes here ---
   console.log('ready');
-  $("#btn").on('click', function()  {
+  // $("#btn").on('click', function()  {
  
-    console.log($("#tweet-textarea").val(), $("#tweet-textarea").val().length);
-    let aString = $("#tweet-textarea").val();
+  //   console.log($("#tweet-textarea").val(), $("#tweet-textarea").val().length);
+  //   let aString = $("#tweet-textarea").val();
  
-  });
+  // });
   $("#tweet-textarea").on('input propertychange paste', function(){
 
     const $counter = $(".counter");

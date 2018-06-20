@@ -3,6 +3,8 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+ 
+ 
 $(document).ready(function(){
   const tweetData = {
     "user": {
@@ -20,60 +22,79 @@ $(document).ready(function(){
     "created_at": 1461116232227
   }
 
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": {
-          "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-          "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-          "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-        },
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": {
-          "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-          "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-          "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-        },
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    },
-    {
-      "user": {
-        "name": "Johann von Goethe",
-        "avatars": {
-          "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-          "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-          "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-        },
-        "handle": "@johann49"
-      },
-      "content": {
-        "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-      },
-      "created_at": 1461113796368
-    }
-  ];
+  // const data = [
+  //   {
+  //     "user": {
+  //       "name": "Newton",
+  //       "avatars": {
+  //         "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+  //         "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
+  //         "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+  //       },
+  //       "handle": "@SirIsaac"
+  //     },
+  //     "content": {
+  //       "text": "If I have seen further it is by standing on the shoulders of giants"
+  //     },
+  //     "created_at": 1461116232227
+  //   },
+  //   {
+  //     "user": {
+  //       "name": "Descartes",
+  //       "avatars": {
+  //         "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
+  //         "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
+  //         "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
+  //       },
+  //       "handle": "@rd" },
+  //     "content": {
+  //       "text": "Je pense , donc je suis"
+  //     },
+  //     "created_at": 1461113959088
+  //   },
+  //   {
+  //     "user": {
+  //       "name": "Johann von Goethe",
+  //       "avatars": {
+  //         "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
+  //         "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
+  //         "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
+  //       },
+  //       "handle": "@johann49"
+  //     },
+  //     "content": {
+  //       "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
+  //     },
+  //     "created_at": 1461113796368
+  //   }
+  // ];
+
+  
   function createTweetElement(tweetObj){
-    console.log(tweetObj.text) ;
-     
-   return tweetObj.text;
+   
+   let aTweet = tweetObj;
+        let name = aTweet['user'].name;
+        let avatar = aTweet['user']['avatars'].small;
+        let handle = aTweet['user'].handle;
+         
+        let createdDateMilli = aTweet['created_at'] / 86400000000;
+        let createDate = Math.round(createdDateMilli);  
+ 
+        let Obj = {
+          name: name,
+          avatar: avatar,
+          handle: handle,
+          createDate: createDate,
+          tweet: aTweet.content.text
+        }
+        //console.log(Obj);
+        let myHTMLObject = createHTMLObject(Obj)
+        $('#all-tweets').prepend(myHTMLObject);
+   //return tweetObj.text;
   }
 
   function createHTMLObject(inputObj){
-    console.log(inputObj);
+    //console.log(inputObj.avatar);
     let HTMLObj =  `
     <article>
       <header class="tweet header">
@@ -101,40 +122,37 @@ $(document).ready(function(){
     // loops through tweets
       // calls createTweetElement for each tweet
       // takes return value and appends it to the tweets container
-      //console.log(tweets);
+       
+  
       for( let item in tweets){
-         
-        let aTweet = tweets[item];
-        let name = aTweet['user'].name;
-        let avatar = aTweet['user']['avatars'].small;
-        let handle = aTweet['user'].handle;
-        //let createDate = aTweet['created_at'];
-        let createdDateMilli = aTweet['created_at'] / 86400000000;
-        let createDate = Math.round(createdDateMilli);  
-        let $tweet = createTweetElement(aTweet['content']);
-        let Obj = {
-          name: name,
-          avatar: avatar,
-          handle: handle,
-          createDate: createDate,
-          tweet: $tweet
-        }
-        let myHTMLObject = createHTMLObject(Obj)
-        console.log(myHTMLObject)
-        //$('.message').append($tweet + "<br/>");
-        $('#all-tweets').append(myHTMLObject);
+        createTweetElement(tweets[item]);
       }
-      
-
   }
-  renderTweets(data);
-  //var $tweet = createTweetElement(tweetData);
-  //console.log($tweet); // to see what it looks like
-   
-  //console.log('message class is: ', $('.message'));
-  //$('.message').text($tweet);
- // renderTweets(data);
- // $('.message').append($tweet);
+
+  function loadTweets(data){
+    $('#all-tweets').html('');
+    renderTweets(data);
+  }
+  $('form').on('submit', function(e) {
+    e.preventDefault();
+    // 1. Get the data from the form
+    let data = $('form').serialize();
+    // 2. Make a AJAX POST request using that data
+    $.ajax('/tweets', {
+      method: 'POST',
+      data: data
+    }).done(function(data) {
+      //3. Make a AJAX GET thistime
+      $.ajax('/tweets').done(function(data){
+         loadTweets(data);
+      })
+      //clear data from input form   
+      $('form textarea').val('');
+    })
+  });
+  
+  //renderTweets(data);
+  //createTweetElement(tweetData);
 
 })
  
