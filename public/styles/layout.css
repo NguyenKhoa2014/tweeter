@@ -34,6 +34,16 @@ body {
   background: white;
   height: 1200px;
 }
+#alert {
+  display: none;
+}
+
+#alert.display {
+  display: block;
+  color: red;
+  font-size: 1.5em;
+  background: aqua;
+}
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions

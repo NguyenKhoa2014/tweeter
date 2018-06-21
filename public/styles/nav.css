@@ -5,6 +5,10 @@
   background-color: #00A087;
   color: #e8fdff;
   margin-bottom: 0px; 
+  width: 450px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #nav-bar .header {
@@ -18,4 +22,11 @@
   height: 80px;
   font-weight: lighter;
   margin-right: 10px;
+}
+#nav-bar button {
+  color: black;
+  line-height: 4em;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
 }

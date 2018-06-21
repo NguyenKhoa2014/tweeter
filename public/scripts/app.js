@@ -6,6 +6,8 @@
  
  
 $(document).ready(function(){
+  loadTweets();
+  $(".new-tweet").slideToggle();
   const tweetData = {
     "user": {
       "name": "Newton",
@@ -70,22 +72,20 @@ $(document).ready(function(){
   // ];
 
   
-  function createTweetElement(tweetObj){
-   
+  function createTweetElement(tweetObj){ 
    let aTweet = tweetObj;
         let name = aTweet['user'].name;
         let avatar = aTweet['user']['avatars'].small;
         let handle = aTweet['user'].handle;
-         
         let createdDateMilli = aTweet['created_at'] / 86400000000;
         let createDate = Math.round(createdDateMilli);  
- 
         let Obj = {
           name: name,
           avatar: avatar,
           handle: handle,
           createDate: createDate,
           tweet: aTweet.content.text
+          //tweet: safetweet
         }
         //console.log(Obj);
         let myHTMLObject = createHTMLObject(Obj)
@@ -94,7 +94,7 @@ $(document).ready(function(){
   }
 
   function createHTMLObject(inputObj){
-    //console.log(inputObj.avatar);
+    const safetweet = escape(inputObj.tweet);
     let HTMLObj =  `
     <article>
       <header class="tweet header">
@@ -104,7 +104,8 @@ $(document).ready(function(){
       </div>
       <div name="userid" class="userid">${inputObj.handle}</div>
       </header>
-      <p class="tweet message">${inputObj.tweet} </p>
+      
+      <p class="tweet message">${safetweet} </p>
       <footer class="tweet footer"> 
       <p class="days">${inputObj.createDate} days ago</p>
       <div class="icons">
@@ -122,34 +123,64 @@ $(document).ready(function(){
     // loops through tweets
       // calls createTweetElement for each tweet
       // takes return value and appends it to the tweets container
-       
-  
       for( let item in tweets){
         createTweetElement(tweets[item]);
       }
   }
 
-  function loadTweets(data){
-    $('#all-tweets').html('');
-    renderTweets(data);
+  function formValidation(formData){
+    console.log('formData.text: ',formData.text);
+    let valid = false;
+    if (formData.length === 5){
+      valid = false;
+    } else {
+      valid = true;
+    }
+    return valid;
   }
+
+  function loadTweets(){
+    $.ajax('/tweets').done(function(data){
+      $('#all-tweets').html('');
+      renderTweets(data);
+    })
+  }
+
   $('form').on('submit', function(e) {
     e.preventDefault();
-    // 1. Get the data from the form
+    // Get the data from the form
     let data = $('form').serialize();
-    // 2. Make a AJAX POST request using that data
-    $.ajax('/tweets', {
-      method: 'POST',
-      data: data
-    }).done(function(data) {
-      //3. Make a AJAX GET thistime
-      $.ajax('/tweets').done(function(data){
-         loadTweets(data);
-      })
+    let valid = formValidation(data);
+    console.log('what is valid before if: ',valid)
+    if (valid){
+      // Make a AJAX POST request using that data
+      $.ajax('/tweets', {
+        method: 'POST',
+        data: data
+      }).done(function(data) {
+        loadTweets();
       //clear data from input form   
       $('form textarea').val('');
-    })
+    })      
+    } else {
+      $('#alert').addClass('display');
+      $('#alert').html('Invalid input. Please enter data');
+      $('#tweet-textarea').on('keypress', function(){
+        $('#alert').removeClass('display');
+      })
+    }
   });
+
+  function escape(str) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
+  $('#compose').click(function(){
+    $(".new-tweet").slideToggle();
+    $("#tweet-textarea").focus();
+});
   
   //renderTweets(data);
   //createTweetElement(tweetData);
