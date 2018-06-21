@@ -1,12 +1,6 @@
 $(document).ready(function() {
   // --- our code goes here ---
-  console.log('ready');
-  // $("#btn").on('click', function()  {
- 
-  //   console.log($("#tweet-textarea").val(), $("#tweet-textarea").val().length);
-  //   let aString = $("#tweet-textarea").val();
- 
-  // });
+  
   $("#tweet-textarea").on('input propertychange paste', function(){
 
     const $counter = $(".counter");
@@ -27,19 +21,12 @@ $(document).ready(function() {
     }
   })
   $("article").bind("mouseover", function(){
-    var element = $("article");
-    //console.log(element);
-    //console.log(element.classList);
-    //element.style.filter += 'contrast(110%)';
-    element.addClass('.tweet-mouseover');
-    
-    //element.classList.add('.tweet-mouseover');
+    var element = $("article"); 
+    element.addClass('.tweet-mouseover'); 
   });
 
   $("article").bind("mouseout", function(){
-    var element = $("article");
-    //console.log(element);
-    //element.classList.add('.tweet-mouseout');
+    var element = $("article"); 
   });
 
 }); //end of document ready
