@@ -25,14 +25,14 @@ body {
   
 }
 
-.container {
-  border: 1px solid grey;
+.container1 {
+   
   width: 450px;
   padding-top: 30px;
   margin: 0 auto;
   align-content: center; 
   background: white;
-  height: 1200px;
+  height: 2000px;
 }
 #alert {
   display: none;

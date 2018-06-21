@@ -20,7 +20,6 @@
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-  
      
   </head>
 
@@ -36,13 +35,12 @@
            <div class="right">
              <button id="compose"><span class="glyphicon glyphicon-edit"></span>Compose</button>
            </div>
-      
-      <!-- <button><span class="glyphicon glyphicon-edit"></span>Compose</button> -->
+     
     </nav>
      
     </div>
     <!-- Page-specific (main) content here -->
-    <main class="container">
+    <main class="container1">
         <section class="new-tweet">
  
             <h2 class="tweet-title">Compose Tweet</h2>
@@ -52,35 +50,13 @@
                   <input id="btn" type="submit" value="Tweet">
                   <span class="counter" id="charCount">140</span>
               </footer>
- 
             </form>
-
             <article id="alert" class="alert">
-
+              <!-- render alert if exists into here -->
            </article>
           </section>
           <section id="all-tweets">
-
-            <!-- <article>
-              <header class="tweet header">
-                <div class="user-image-group">
-                    <img  class="userimg" src="/images/smiley.png"  alt="user image"/>
-                    <span name="username" class="username">Bill Fields</span>
-                </div>
-                <div name="userid" class="userid">@MrKhoa</div>
-              </header>
-              <p class="tweet message"> </p>
-              <footer class="tweet footer"> 
-                <p class="days">4 days ago</p>
-                <div class="icons">
-                  <span class="glyphicon glyphicon-flag"></span>
-                  <span class="glyphicon glyphicon-retweet"></span>
-                  <span class="glyphicon glyphicon-heart"></span>
-                   
-                </div>
-              </footer>
-            </article> -->
-
+            <!-- render tweets into here -->
           </section>
     </main>
 
