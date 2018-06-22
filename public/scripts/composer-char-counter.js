@@ -9,13 +9,11 @@ $(document).ready(function() {
     const charsRemaining = 140 - charCount;
     $counter.html(charsRemaining);
     var el = $counter[0];
-    if(charsRemaining < 0){
-      console.log("no more characters");
+    if(charsRemaining < 0){ 
       el.style.color = "#FF0000";
       el.classList.add('.negative');
     }
     else{
-      console.log("still characters");
       el.style.color = "#000000";
       el.classList.remove('.negative')
     }

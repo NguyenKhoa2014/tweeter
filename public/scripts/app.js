@@ -60,7 +60,6 @@ $(document).ready(function(){
   }
 
   function formValidation(formData){
-    console.log('formData.text: ',formData.text);
     let valid = false;
     if (formData.length === 5){
       valid = false;
@@ -81,7 +80,6 @@ $(document).ready(function(){
     e.preventDefault();
     // Get the data from the form
     let data = $('form').serialize();
-    console.log('what is data before if: ',data);
     let valid = formValidation(data);
      
     if (valid){
@@ -93,6 +91,7 @@ $(document).ready(function(){
         loadTweets();
       //clear data from input form   
       $('form textarea').val('');
+      $('#charCount').html('140');
       $('.alert').text('');
     })      
     } else {
