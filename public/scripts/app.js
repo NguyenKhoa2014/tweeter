@@ -93,6 +93,7 @@ $(document).ready(function(){
         loadTweets();
       //clear data from input form   
       $('form textarea').val('');
+      $('.alert').text('');
     })      
     } else {
       $('#alert').addClass('display');
