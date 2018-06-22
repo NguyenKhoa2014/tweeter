@@ -17,4 +17,6 @@ This repository is the starter code for the project: Students will fork and clon
 - Node 5.10.x or above
 
 ## Final Product
-
+!["Home screen"](https://github.com/NguyenKhoa2014/tweeter/blob/master/screenshots/HomeScreen.png?raw=true)
+!["Compose Tweet screen"](https://github.com/NguyenKhoa2014/tweeter/blob/master/screenshots/ComposeTweet.png?raw=true)
+!["Error over limte of character screen"](https://github.com/NguyenKhoa2014/tweeter/blob/master/screenshots/InpurOverLimitOf140Char.png?raw=true)
