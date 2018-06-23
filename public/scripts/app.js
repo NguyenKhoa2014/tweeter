@@ -45,7 +45,7 @@ $(document).ready(function(){
       <div class="icons">
         <span class="glyphicon glyphicon-flag"></span>
         <span class="glyphicon glyphicon-retweet"></span>
-        <span class="glyphicon glyphicon-heart"></span>
+        <span class="glyphicon glyphicon-heart"><p></p></span>
       </div>
     </footer>
     </article>
